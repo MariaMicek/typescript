@@ -1,44 +1,30 @@
-let zrobione: boolean = true
-let liczba: number = 123
-let tekst: string = 'to jest tekst'
+//OBJECT
+let mojObiekt: object = {}
+mojObiekt = undefined
+mojObiekt = 123
 
-let tablicaLiczb: number[] = [1, 2, 3, 4, 5]
-let tablicaLiczb2: Array<number> = [1, 2, 3]
-
-let tablicaStringow: string[] = ['ala', 'ma', 'kota']
-let tablicaStringow2: Array<string> = ['ok', 2]
-tablicaStringow2.push(123)
-
-let krotka1: [number, boolean] = [12, true]
-krotka1 = ['a', 12]
-let krotka2: [string, boolean[]] = ['test', [true, false]]
-let krotka3: [[number, boolean], [string, boolean[]]] = [krotka1, krotka2]
-
-//ENUM
-let miesiacRezerwacji: string = 'lipiec'
-miesiacRezerwacji = 'june'
-if (miesiacRezerwacji === 'lipiec') {
-    //fuckup
-}
-enum Miesiac { STYCZEN, LUTY, MARZEC, KWIECIEN, MAJ, CZERWIEC, LIPIEC, SIERPIEN, WRZESIEN, PAZDZIERNIK, LISTOPAD, GRUDZIEN }
-let newMiesiacRezerwacji: Miesiac = Miesiac.LIPIEC
-if (newMiesiacRezerwacji === Miesiac.LIPIEC) {
-    console.log('sukces')
+//FUNCTIONS
+const func = (a: number, b: number = 2, c?: number) => {                       //parametry zwykłe są wymagane        
+    return a + b + (c ? c : 0)                                                 //parametry zwykłe, z wartością domyślną i opcjonalne
 }
 
-//ANY
-let jeszczeNieWiemy: any = 120
-jeszczeNieWiemy = 'bez błędu'
-jeszczeNieWiemy = {}
+const value1 = func()
+const value2 = func(2)
+const value3 = func(2, 3)
+const value4 = func(2, 3, 4)
+const value5 = func('abc')
 
-//void, never, null, undefined
-newMiesiacRezerwacji = null     //brak błędu przy zmianie wartości na null i undefined
-krotka3 = undefined
+let result: string
+result = value2
 
-function add(a, b): void {       // void oznacza, że funkcja nie zwraca żadnej wartość, będzię błąd jeżeli będziemy próbowali coś zwrócić (przeciwieństwo typu any)
-    return a + b                //w tym przypadku nie ma błędu, bo a i b są automatycznie uznane za undefined, a dodane do siebie zwracają undefined czyli void
-}                               // będzie błąd, gdy określimy a i b jako number add(a: number, b: number)
 
-function testNever(): never {
-    throw new Error()
+enum Weekend {FRIDAY, SATURDAY, SUNDAY}
+
+const myFunction = (a: [number, boolean], b: Weekend, c: number = 20, d?: boolean, e?: boolean): Array<Weekend> => {
+    return [Weekend.FRIDAY, Weekend.SATURDAY, Weekend.SUNDAY]
 }
+
+const v1 = myFunction([10, true], Weekend.FRIDAY)
+const v2 = myFunction([10, true], Weekend.FRIDAY, 20)
+const v3 = myFunction([10, true], Weekend.FRIDAY, 20, true)
+const v4 = myFunction([10, true], Weekend.FRIDAY, 20, true, false)
