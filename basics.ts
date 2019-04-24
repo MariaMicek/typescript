@@ -30,3 +30,15 @@ if (newMiesiacRezerwacji === Miesiac.LIPIEC) {
 let jeszczeNieWiemy: any = 120
 jeszczeNieWiemy = 'bez błędu'
 jeszczeNieWiemy = {}
+
+//void, never, null, undefined
+newMiesiacRezerwacji = null     //brak błędu przy zmianie wartości na null i undefined
+krotka3 = undefined
+
+function add(a, b): void {       // void oznacza, że funkcja nie zwraca żadnej wartość, będzię błąd jeżeli będziemy próbowali coś zwrócić (przeciwieństwo typu any)
+    return a + b                //w tym przypadku nie ma błędu, bo a i b są automatycznie uznane za undefined, a dodane do siebie zwracają undefined czyli void
+}                               // będzie błąd, gdy określimy a i b jako number add(a: number, b: number)
+
+function testNever(): never {
+    throw new Error()
+}
